@@ -18,37 +18,25 @@ Pay Roulette
  Then, using random, select a person to pay the bill.
  Then output the result with an f-string
  Your code after this line
+
+ Randomization:
+ https://docs.rs/rand/latest/rand/
+    https://docs.rs/rand/latest/rand/trait.Rng.html
+cargo add rand -> See cargo.toml
 */
 
-use std::io;
 use rand::prelude::*;
+use std::io;
 fn main() {
     // read guests
     let names = input("Gib die Namen der Gäste ein, getrennt durch ', ': ");
     let mut vector: Vec<&str> = Vec::new();
 
     // split names
-    let name_list = names.split(", ");
-    for name in name_list {
-        vector.push(name);
-    }
 
     // randomly choose guest
     let mut rng = thread_rng();
     let random_index = rng.gen_range(0..vector.len());
-
-    println!("{:#?}", vector);
-
-    println!("{} zahlt die Rechnung!", vector[random_index]);
 }
 
-fn input(prompt: &str) -> String {
-    let mut input = String::new();
-    println!("{}", prompt);
-    match io::stdin().read_line(&mut input) {
-        Ok(_) => {}
-        Err(e) => println!("Fehler beim Lesen der Eingabe: {}", e),
-        
-    }
-    input.trim().to_string()
-}
+fn input(prompt: &str) -> String {}

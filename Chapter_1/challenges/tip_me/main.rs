@@ -18,64 +18,20 @@ EN:     Write a program that evenly distributes the bill of a table to all guest
         in a print() statement.
 */
 
-
 use std::io; // Import the io library
 
 // Main function to start the program
 
-fn main() -> io::Result<()>{
-
-
-    let stdin = io::stdin();
-
-    let mut bill_input = String::new();
-    let mut person_count_input = String::new();
-    let mut tip_percentage_input = String::new();
-    
-    println!("Willkommen beim Tip Calculator!");
-
-    println!("Wie hoch ist die Rechnung? ");
-    stdin.read_line(&mut bill_input)?;
-
-    println!("Wie viele Personen sind dabei? ");
-    stdin.read_line(&mut person_count_input)?;
-
-    println!("Wie viel Prozent Trinkgeld möchtest du geben? ");
-    stdin.read_line(&mut tip_percentage_input)?;
-
-    let bill: f32 = match bill_input.trim().parse() {
-        Ok(num) => num,
-        Err(e) => {
-            println!("Rechnung konnte nicht ermittelt werden: {}", e);
-            0.0
-        },
-    };
-    let person_count: f32 = match person_count_input.trim().parse() {
-        Ok(num) => num,
-        Err(e) => {
-            println!("Personeanzahl konnte nicht ermittelt werden: {}", e);
-            1.0
-        },
-        };
-
-    let tip_percentage: f32 = match tip_percentage_input.trim().parse(){
-        Ok(num) => num,
-        Err(e) => {
-            panic!("Trinkgeld konnte nicht ermittelt werden: {}", e);
-        },
-    };
-
-
-
+fn main() -> io::Result<()> {
+    let bill = 0;
 
     let tip = bill * tip_percentage / 100.0;
     let total = bill + tip;
     let total_per_person = total / person_count;
 
-    println!("Trinkgeld: {:.2}", tip);
-    println!("Gesamt: {:.2}", total);
-    println!("Gesamt pro Person: {:.2}", total_per_person);
-
+    println!("Tip: {:.2}", tip);
+    println!("Total: {:.2}", total);
+    println!("Total per guest: {:.2}", total_per_person);
 
     Ok(())
 }

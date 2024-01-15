@@ -29,30 +29,10 @@ fn main() {
             return;
         }
     };
-        
+
     is_leap_year(year);
 }
 
-fn is_leap_year(year: u32) -> bool {
-    if year % 4 == 0 {
-        if year % 100 == 0 {
-            if year % 400 == 0 { 
-                println!("{} is a leap year", year);
-                return true;
-            }
-            println!("{} is not a leap year", year);
-            return false;
-        }
-        println!("{} is a leap year", year);
-        return true;
-    }
-    println!("{} is not a leap year", year);
-    return false;
-}
+fn is_leap_year(year: u32) -> bool {}
 
-fn read_userinput(prompt: &str) -> String {
-    println!("{}", prompt);
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("Failed to read line");
-    input.trim().to_lowercase().to_string()
-}
+fn read_userinput(prompt: &str) -> String {}

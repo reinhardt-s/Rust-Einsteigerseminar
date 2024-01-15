@@ -19,16 +19,4 @@ fn main() {
     fizz_buzz()
 }
 
-fn fizz_buzz() {
-    for i in 1..101 {
-        if i % 3 == 0 && i % 5 == 0 {
-            println!("Fizz Buzz");
-        } else if i % 3 == 0 {
-            println!("Fizz");
-        } else if i % 5 == 0 {
-            println!("Buzz");
-        } else {
-            println!("{}", i);
-        }
-    }
-}
+fn fizz_buzz() {}
