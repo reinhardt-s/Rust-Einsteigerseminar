@@ -19,10 +19,12 @@ Erstelle hierzu:
         Spell { name: "Wingardium Leviosa".to_string(), description: "Schwebezauber".to_string() },
         Spell { name: "Accio".to_string(), description: "Aufrufezauber".to_string() },
         Spell { name: "Nox".to_string(), description: "Verdunklungszauber".to_string() },
-  - add_spell: Fügt einen neuen Spell zum Spellbook hinzu
-  - remove_spell: Entfernt einen Spell aus dem Spellbook
-  - list_spells: Gibt alle Spellnamen aus dem Spellbook aus
-  - find_spell: Gibt einen Spell aus dem Spellbook aus
+  - im trait Write:
+    - add_spell: Fügt einen neuen Spell zum Spellbook hinzu
+    - remove_spell: Entfernt einen Spell aus dem Spellbook
+  - im trait Read:
+    - list_spells: Gibt alle Spellnamen aus dem Spellbook aus
+    - find_spell: Gibt einen Spell aus dem Spellbook aus
 
 EN:
 Ron's Spell Helper
@@ -44,9 +46,11 @@ To do this, create
         Spell { name: "Wingardium Leviosa".to_string(), description: "Levitation spell".to_string() },
         Spell { name: "Accio".to_string(), description: "Invocation spell".to_string() },
         Spell { name: "Nox".to_string(), description: "Darkening spell".to_string() },
-  - add_spell: Adds a new spell to the spellbook
-  - remove_spell: Removes a spell from the spellbook
-  - list_spells: Returns all spell names from the spellbook
-  - find_spell: Returns a spell from the spellbook
+    - in the trait Write:
+        - add_spell: Adds a new spell to the spellbook
+        - remove_spell: Removes a spell from the spellbook
+    - in the trait Read:
+        - list_spells: Returns all spell names from the spellbook
+        - find_spell: Returns a spell from the spellbook
 
 */
