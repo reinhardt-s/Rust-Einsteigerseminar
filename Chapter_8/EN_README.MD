@@ -60,6 +60,17 @@ cargo new my_library --lib
 
 > **Note:** The `--lib` flag tells Cargo to create a library crate instead of a binary crate. Compare the Cargo.toml and lib.rs vs. main.rs files.
 
+
+In the Cargo.toml file, you can specify some metadata about your crate:
+
+https://doc.rust-lang.org/cargo/reference/cargo-targets.html#library
+```toml
+[lib]
+name = "my_library"
+crate-type = ["lib"]
+```
+
+
 ### Declare and implement a module
 
 ```rust
