@@ -24,7 +24,7 @@ impl Library {
             Some(i) => {
                 self.books.remove(i);
                 Ok(())
-            }
+            },
             None => Err(format!("Book with the title '{}' not found.", title)),
         }
     }

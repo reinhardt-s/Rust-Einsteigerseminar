@@ -20,6 +20,39 @@ assert!(expression): Checks if the expression is true.
 assert_eq!(left, right): Checks for equality.
 assert_ne!(left, right): Checks for inequality.
 
+### 2.1 Partial equality
+In Rust, PartialEq is a trait used to check partial equality between values. Unlike Eq, which implies a complete equality check (i.e., every comparison operation results in either true or false), PartialEq allows for an equality check that may not be defined or useful in all cases.
+
+**Why PartialEq?**
+A classic example of the use of `PartialEq` instead of Eq are floating point numbers (f32 and f64). Due to the way floating point numbers are represented, it is possible that two numbers that should be "equal" are actually considered unequal due to rounding errors. In addition, there are special values such as NaN ("Not a Number") where the usual logic of equality does not apply (NaN is by definition not equal to itself).
+
+```rust
+#[derive(Debug)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+impl PartialEq for Point {
+    fn eq(&self, other: &Self) -> bool {
+        self.x == other.x && self.y == other.y
+    }
+}
+```
+
+**Using PartialEq**
+Once `PartialEq` is implemented for a type, you can use comparison operators such as == and != to compare instances of that type:
+
+```rust
+fn main() {
+    let point1 = Point { x: 1, y: 2 };
+    let point2 = Point { x: 1, y: 2 };
+    let point3 = Point { x: 3, y: 4 };
+
+    assert_eq!(point1 == point2, true);
+    assert_eq!(point1 == point3, false);
+}
+```
 
 ### 3. Test execution
 Tests can be executed with the command cargo test. This command compiles the code in test mode and executes all functions marked with #[test].
