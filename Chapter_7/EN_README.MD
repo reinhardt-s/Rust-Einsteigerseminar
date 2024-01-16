@@ -127,5 +127,4 @@ Inside each task, we simulate a delay with `tokio::time::sleep(tokio::time::Dura
 The `tokio::try_join!` macro waits for all the tasks to complete. This is also an asynchronous operation, and it will yield control if the tasks are not yet completed.
 
 **Challenge 1: (25 Minutes)**  
-Erstelle ein Rust-Programm, das die Tokio-Bibliothek verwendet, um asynchron fünf verschiedene Zahlen auf Primzahleigenschaften zu prüfen.
-Prüfen Sie alle fünf Zahlen unabhängig voneinander auf ihre Primzahleigenschaft und geben Sie die Ergebnisse aus, sobald sie berechnet sind.
+Create a Rust program that uses the Tokyo library to asynchronously check five different numbers for prime number properties. Check all five numbers independently for their prime number properties and output the results as soon as they are calculated.
