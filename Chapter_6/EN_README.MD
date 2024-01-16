@@ -40,7 +40,7 @@ macro_rules! log {
 
 > `$msg:expr` is a pattern that matches any expression and binds it as `$msg`.
 
-
+https://doc.rust-lang.org/reference/macros-by-example.html
 
 
 Calling the macro:
