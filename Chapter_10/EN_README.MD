@@ -132,7 +132,7 @@ let numbers = vec![1, 2, 3];
 let incremented_numbers: Vec<_> = numbers.iter().map(|&x| x + 1).collect();
 ```
 
-# Iterators, Map, Collect, and Enumerate
+# Iterators, Map, Collect, Next, and Enumerate
 
 Rust provides powerful iterator traits that allow for complex data manipulation in a concise and readable way. This document covers some of the most commonly used iterator methods: .iter(), .map(), .collect(), and .enumerate().
 
@@ -177,3 +177,40 @@ for (index, value) in vec.iter().enumerate() {
 1: b
 2: c
 ```
+
+## .next()
+
+`.next()` is a fundamental method in Rust's iterator trait. It is used to retrieve the next item from an iterator. 
+
+### Basic Usage
+
+When you call `.next()` on an iterator, it does two things:
+
+It returns an `Option` that is `Some(value)` if there is a value to yield, or `None` if the iterator has been exhausted (i.e., there are no more items).
+It advances the iterator to the next item:
+
+```rust
+let mut numbers = vec![1, 2, 3].into_iter();
+
+assert_eq!(numbers.next(), Some(1));
+assert_eq!(numbers.next(), Some(2));
+assert_eq!(numbers.next(), Some(3));
+assert_eq!(numbers.next(), None); // No more items
+```
+
+In this example, each call to .next() returns the next number in the vector until there are no more numbers, at which point it returns None.
+
+How `.next()` works with loops
+
+`.next()` is often used in conjunction with loops to process each item in an iterator:
+
+```rust
+let numbers = vec![1, 2, 3];
+let mut iter = numbers.iter();
+
+while let Some(number) = iter.next() {
+    println!("{}", number);
+}
+```
+
+This loop will print each number in the numbers vector. The while let construct is a convenient way to keep calling .next() until it returns None, at which point the loop exits.
