@@ -123,11 +123,29 @@ It contains the following files:
 * .gitignore - The file listing files and folders to be ignored by Git
 * src/main.rs - The project's main file
 
-| usize | Unsigned integer, size depends on architecture | let x: usize = 5; | 0 to 4,294,967,295 (32-bit) or 0 to 18,446,744,073,709,551,615 (64-bit) | 4 bytes (32-bit) or 8 bytes (64-bit) |
-| f32 | 32-bit floating point number | let x: f32 = 5.0; | 1.2 * 10^-38 to 3.4 * 10^38 | 4 bytes |
-| bool | Boolean | let x: bool = true; | true or false | 1 byte |
-| char | Unicode character | let x: char = 'a'; | 0 to 1,112,064 | 4 bytes |
-| str | String Slice | let x: &str = "Hello"; | | 2 bytes per character |
+### Working with variables
+
+https://doc.rust-lang.org/std/mem/fn.size_of.html
+
+The following table gives the size for primitives.
+
+Type | `size_of::<Type>()`
+---- | ---------------
+() | 0
+bool | 1
+u8 | 1
+u16 | 2
+u32 | 4
+u64 | 8
+u128 | 16
+i8 | 1
+i16 | 2
+i32 | 4
+i64 | 8
+i128 | 16
+f32 | 4
+f64 | 8
+char | 4
 
 ### Mutability - mut
 
