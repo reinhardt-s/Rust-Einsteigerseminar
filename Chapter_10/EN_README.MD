@@ -132,7 +132,7 @@ let numbers = vec![1, 2, 3];
 let incremented_numbers: Vec<_> = numbers.iter().map(|&x| x + 1).collect();
 ```
 
-# Iterators, Map, Collect, Next, and Enumerate
+# Iterators, Map, Collect, Next, Filter, and Enumerate
 
 Rust provides powerful iterator traits that allow for complex data manipulation in a concise and readable way. This document covers some of the most commonly used iterator methods: .iter(), .map(), .collect(), and .enumerate().
 
@@ -214,3 +214,33 @@ while let Some(number) = iter.next() {
 ```
 
 This loop will print each number in the numbers vector. The while let construct is a convenient way to keep calling .next() until it returns None, at which point the loop exits.
+
+## .filter()
+
+`.filter()` is used to filter the items in an iterator. It takes a closure that returns a boolean value. If the closure returns true, the item is included in the iterator. If the closure returns false, the item is not included in the iterator.
+
+The `.filter()` method takes a closure as an argument. This closure is the predicate function that decides whether an element should be included in the resulting iterator.
+
+It returns a new iterator that yields only those elements for which the predicate returns true.
+`.filter()` is **lazy**, meaning it doesn't actually filter the items until you iterate over them. This is why it's often used in combination with other iterator methods like `.collect()` to gather the results.
+
+
+
+`.filter()` can be used with iterators over complex types as well. Consider a struct Product and filtering products based on some criteria:
+
+```rust
+struct Product {
+    id: u32,
+    name: String,
+    price: f32,
+}
+
+let products = vec![
+    Product { id: 1, name: "Product 1".to_string(), price: 10.0 },
+    Product { id: 2, name: "Product 2".to_string(), price: 20.0 },
+];
+
+let expensive_products: Vec<Product> = products.into_iter().filter(|p| p.price > 15.0).collect();
+```
+
+Here, .filter() is used to create a new iterator that contains only the products with a price greater than 15.0.
