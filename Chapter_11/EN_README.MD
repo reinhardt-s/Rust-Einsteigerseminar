@@ -57,3 +57,37 @@ Utilize `Result` for error handling and data returning throughout the applicatio
 11. **Logging Macro**  
 Create a custom macro (e.g., `log!(DEBUG, "my message")`) for logging purposes.
 Place the macro in a separate crate (lib).
+
+
+```rust
+use debug_log::log;
+use game::Game;
+use hall_of_fame::HallOfFame;
+use player::Player;
+use statement::Statement;
+use std::io::{self, Write};
+use uuid::Uuid;
+
+mod game;
+mod hall_of_fame;
+mod player;
+mod statement;
+
+fn main() {
+    let mut game = Game::new(vec![
+        Statement::new("Rust is primarily a functional programming language.".to_string(), false),
+        Statement::new("Rust was the 'most loved programming language' in the Stack Overflow Developer Survey from 2016 to 2020.".to_string(), true),
+        Statement::new("Rust does not have a garbage collector.".to_string(), true),
+        Statement::new("Rust was originally designed by Graydon Hoare.".to_string(), true),
+        Statement::new("Rust allows null pointers for memory safety.".to_string(), false),
+        Statement::new("In Rust, variables are immutable by default.".to_string(), true),
+        Statement::new("Rust is developed and sponsored by Microsoft.".to_string(), false),
+        Statement::new("Rust uses a borrowing and ownership system for memory management.".to_string(), true),
+        Statement::new("Rust does not support asynchronous programming.".to_string(), false),
+        Statement::new("The Rust compiler is named 'rustc'.".to_string(), true),
+    ]);
+
+    // Your code goes here
+
+}
+```
