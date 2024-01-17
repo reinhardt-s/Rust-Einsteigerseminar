@@ -114,3 +114,36 @@ fn main() {
 **Challenge:**  
 Create a Rust library crate named arithmetic_ops that provides basic arithmetic operations (addition, subtraction, multiplication, division) for integers. Then, use this crate in a separate Rust binary project to demonstrate its functionality.
 
+
+# Source Code in other files
+
+The keyword `crate::` is used to start paths relative to the root of the current crate. It is used in particular in modules that are not the root module (e.g. main.rs or lib.rs) to refer to elements in the root module or in other modules.
+
+See also: https://doc.rust-lang.org/reference/items/modules.html#paths
+
+When to use crate::?
+
+In non-root modules: In modules that are not directly defined in the root module, use crate:: to refer to elements defined in the root module or in sibling modules.
+For clarity and to avoid naming conflicts: crate:: can also be used in the root module to create clarity or avoid naming conflicts with elements from external crates.
+
+Imagine you have a crate structure as follows:
+
+```bash
+crate
+├── main.rs (or lib.rs)
+├── player.rs
+└── game.rs
+````
+
+In game.rs to use a function from player.rs:
+
+```rust
+// In game.rs
+use crate::player::some_function;
+
+fn use_some_function() {
+    some_function();
+}
+````
+Here `crate::` enables access to some_function from the bar module.
+
