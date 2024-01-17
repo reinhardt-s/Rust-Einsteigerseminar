@@ -119,7 +119,8 @@ Create a Rust library crate named arithmetic_ops that provides basic arithmetic 
 
 The keyword `crate::` is used to start paths relative to the root of the current crate. It is used in particular in modules that are not the root module (e.g. main.rs or lib.rs) to refer to elements in the root module or in other modules.
 
-See also: https://doc.rust-lang.org/reference/items/modules.html#paths
+See: https://doc.rust-lang.org/reference/items/modules.html#paths  
+And also: https://doc.rust-lang.org/reference/paths.html#crate
 
 ## When to use crate::?
 
