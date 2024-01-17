@@ -46,18 +46,16 @@ enum MyError {
 
 You can also implement the `std::error::Error` trait for your custom error type.
 
-## Using `Result` and `Option`
-The `Result` and `Option` types are used for functions that can fail or return nothing:
+## Using `Result`
+The `Result` type are used for functions that can fail:
 
 ```rust
 fn might_fail() -> Result<(), MyError> {
     Ok(())
 }
-
-fn might_return_nothing() -> Option<String> {
-    Some("A string".to_string())
-}
 ```
+
+With this, you now can use `match` to have a proper error handling.
 
 ## Full example
 ```rust
