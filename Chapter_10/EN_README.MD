@@ -113,11 +113,10 @@ mod tests {
         }
     }
 }
-````
+```
 
 
 # Closures
-
 Closures  are anonymous functions you can save in a variable or pass as arguments to other functions.
 
 ## Creating a Closure
@@ -135,3 +134,48 @@ let numbers = vec![1, 2, 3];
 let incremented_numbers: Vec<_> = numbers.iter().map(|&x| x + 1).collect();
 ```
 
+# Iterators, Map, Collect, and Enumerate
+
+Rust provides powerful iterator traits that allow for complex data manipulation in a concise and readable way. This document covers some of the most commonly used iterator methods: .iter(), .map(), .collect(), and .enumerate().
+
+## .iter()
+
+The `.iter()` method creates an iterator over the items in a collection like an array, vector, or slice.
+
+```rust
+let vec = vec![1, 2, 3, 4, 5];
+let iter = vec.iter(); // Creates an iterator over `vec`
+```
+
+## .map() and collect()
+
+`.map()` is used to transform each item of an iterator into another value. This method takes a closure that defines the transformation.
+
+
+`.collect()` is used to convert an iterator into a collection such as a vector, hashmap, etc. It's often used at the end of an iterator chain to collect the results.
+
+
+```rust
+let vec = vec![1, 2, 3, 4, 5];
+let squared: Vec<i32> = vec.iter().map(|&x| x * x).collect();
+```
+
+Here, .collect() gathers the squared numbers into a new vector.
+
+## .enumerate()
+
+`.enumerate()` adds a loop counter to an iterator. The method returns each item of the iterator along with its index.
+
+```rust
+let vec = vec!['a', 'b', 'c'];
+for (index, value) in vec.iter().enumerate() {
+    println!("{}: {}", index, value);
+}
+```
+
+
+```bash
+0: a
+1: b
+2: c
+```
