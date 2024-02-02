@@ -190,3 +190,54 @@ impl Library {
     }
 }
 ```
+
+
+**Beispiel mit Input**
+```rust
+macro_rules! readline {
+    ($input:ident) => {
+        std::io::stdin().read_line(&mut $input).unwrap();
+    };
+}
+
+
+pub fn choose_answer() -> bool {
+    let mut input = String::new();
+    println!("What is the answer to life, the universe, and everything?");
+    readline!(input); 
+
+    process_answer(input.trim())
+}
+
+pub fn process_answer(answer: &str) -> bool {
+    match answer {
+        "42" => true,
+        _ => false,
+    }
+}
+
+pub fn choose_answer_with_input(input: &str) -> bool {
+    process_answer(input.trim())
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_process_answer_correct() {
+        assert_eq!(process_answer("42"), true);
+    }
+
+    #[test]
+    fn test_process_answer_incorrect() {
+        assert_eq!(process_answer("not the answer"), false);
+    }
+
+    #[test]
+    fn test_choose_answer_correct() {
+        assert_eq!(choose_answer_with_input("42"), true);
+    }
+}
+```
