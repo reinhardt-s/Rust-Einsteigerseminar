@@ -91,3 +91,74 @@ fn main() {
 
 }
 ```
+
+## Multi-Datei Beispiel-Aufbau
+
+```bash
+src/
+  - main.rs
+  - game.rs
+  - player.rs
+```
+
+**Game.rs**
+```rust
+pub mod Game {
+    use crate::player::Player;
+
+    pub struct Game {
+        score: i32,
+        player: Player,
+    }
+
+    pub trait GameTrait {
+        fn new(player: Player) -> Self;
+        fn play(&mut self);
+        fn reset(&mut self);
+        fn get_score(&self) -> i32;
+    }
+
+    impl GameTrait for Game {
+        fn new(player: Player) -> Game {
+            Game { score: 0, player }
+        }
+        fn play(&mut self) {
+            self.score += 1;
+        }
+        fn reset(&mut self) {
+            self.score = 0;
+        }
+        fn get_score(&self) -> i32 {
+            self.score
+        }
+    }
+}
+```
+
+**player.rs**
+```rust
+pub struct Player {
+    pub name: String,
+    pub age: i32,
+}
+```
+
+**main.rs**
+```rust
+use crate::game::Game::GameTrait;
+
+pub mod player;
+pub mod game;
+
+fn main() {
+    println!("Hello, world!");
+
+    let player = player::Player {
+        name: String::from("Player 1"),
+        age: 25,
+    };
+
+    let mut game = game::Game::Game::new(player);
+
+}
+```
